@@ -54,17 +54,10 @@ public class ArithmeticParserTest {
     }
 
     @Test
-    public void testMulAndDivOperatiodfsdfdn(){
+    public void testExpressionWithBrackets(){
         String expression = "(1+2)";
         int expected = 3;
         evaluateAndCheck(expression,expected);
-    }
-
-    @Test
-    public void checkWrongExpression() {
-        String expression = "2+342";
-        int expected = 4;
-        evaluateAndCheck(expression, expected);
     }
 
     private void evaluateAndCheck(String expression, int expected) {
