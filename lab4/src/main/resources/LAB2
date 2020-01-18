@@ -1,0 +1,40 @@
+a
+
+a [returns v : String]
+            = b ap {&v = b.v + ap.v;};
+
+ap [returns v : String]
+            = OR b ap {&v = OR + b.v + ap.v;}
+            | {&v = "";}
+            ;
+
+b [returns v : String]
+            = c bp {&v = c.v + bp.v;};
+
+bp [returns v : String]
+            = XOR c bp {&v = XOR + c.v + bp.v;}
+            | {&v = "";}
+            ;
+
+c [returns v : String]
+            = d cp {&v = d.v + cp.v;};
+
+cp [returns v : String]
+            = AND d cp {&v = AND + d.v + cp.v;}
+            | {&v = "";}
+            ;
+
+d [returns v : String]
+            = NOT d {&v = NOT + d.v;}
+            | VAR {&v = VAR;}
+            | OP a CP {&v = OP + a.v + CP;}
+            ;
+
+AND = "&";
+XOR = "^";
+OR  = "|";
+OP = "(";
+CP = ")";
+NOT = "!";
+VAR : "[a-z]+";
+WS -> "[ \n\t\r]+";
