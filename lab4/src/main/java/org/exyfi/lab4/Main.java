@@ -34,7 +34,7 @@ public class Main {
         if (args.length != 2) {
             printUsage();
             generateTranslatorForGivenGrammar(ARITHMETIC_GRAMMAR_PATH, ARITHMETIC_GEN_DIR);
-            generateTranslatorForGivenGrammar(LAB2_GRAMMAR_PATH, LAB_2_GEN_DIR);
+      //      generateTranslatorForGivenGrammar(LAB2_GRAMMAR_PATH, LAB_2_GEN_DIR);
         } else {
             generateTranslatorForGivenGrammar(args[0], args[1]);
         }

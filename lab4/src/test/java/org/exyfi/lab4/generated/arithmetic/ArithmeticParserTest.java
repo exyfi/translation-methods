@@ -21,8 +21,22 @@ public class ArithmeticParserTest {
 
     @Test
     public void testShiftRightExpression(){
-        String expression ="4>>1>>2";
-        int expected =64;
+        String expression ="4 >> 2 >> 1 >> 2 >> 2";
+        int expected =2;
+        evaluateAndCheck(expression,expected);
+    }
+
+    @Test
+    public void testShiftRightExpressionWithBrackets(){
+        String expression ="(1 >> 2)";
+        int expected =0;
+        evaluateAndCheck(expression,expected);
+    }
+
+    @Test
+    public void testShiftRightExpressionAgain(){
+        String expression ="(4>>2)";
+        int expected = 1;
         evaluateAndCheck(expression,expected);
     }
 
@@ -48,7 +62,7 @@ public class ArithmeticParserTest {
 
     @Test
     public void checkWrongExpression() {
-        String expression = "2+342\32";
+        String expression = "2+342";
         int expected = 4;
         evaluateAndCheck(expression, expected);
     }

@@ -1,4 +1,14 @@
-addOrSub
+shiftRight
+
+
+shiftRight [returns v : int]
+            = addOrSub shiftRightPrime({addOrSub.v}) {&v = shiftRightPrime.v;}
+            ;
+
+shiftRightPrime(left : int) [returns v : int]
+            = SHIFTRIGHT shiftRight {&v = (int) left >> shiftRight.v;}
+            | {&v = left;}
+            ;
 
 addOrSub [returns v : int, isZero : boolean]
             = mulOrDiv addOrSubPrime({mulOrDiv.v})
@@ -23,7 +33,7 @@ mulOrDivPrime(left : int) [returns v : int]
             ;
 
 unary [returns v : int]
-            = OP addOrSub CP {&v = addOrSub.v;}
+            = OP shiftRight CP {&v = shiftRight.v;}
             | NUM          {&v = Integer.valueOf(NUM);}
             | SUB NUM {&v = -Integer.valueOf(NUM);}
             ;
